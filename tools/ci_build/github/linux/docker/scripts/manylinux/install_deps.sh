@@ -38,7 +38,7 @@ function GetFile {
 if [ ! -d "/opt/python/cp35-cp35m" ]; then
   PYTHON_EXES=("/usr/bin/python3")
 else
-  PYTHON_EXES=("/opt/python/cp35-cp35m/bin/python3.5" "/opt/python/cp36-cp36m/bin/python3.6" "/opt/python/cp37-cp37m/bin/python3.7" "/opt/python/cp38-cp38/bin/python3.8")
+  PYTHON_EXES=("/opt/python/cp35-cp35m/bin/python3.5" "/opt/python/cp36-cp36m/bin/python3.6" "/opt/python/cp37-cp37m/bin/python3.7" "/opt/python/cp38-cp38/bin/python3.8" "/opt/python/cp39-cp39/bin/python3.9")
 fi
 
 os_major_version=$(cat /etc/redhat-release | tr -dc '0-9.'|cut -d \. -f1)
@@ -62,9 +62,6 @@ mkdir -p /tmp/azcopy
 GetFile https://aka.ms/downloadazcopy-v10-linux /tmp/azcopy/azcopy.tar.gz
 tar --strip 1 -xf /tmp/azcopy/azcopy.tar.gz -C /tmp/azcopy
 cp /tmp/azcopy/azcopy /usr/bin
-echo "Installing cmake"
-GetFile https://github.com/Kitware/CMake/releases/download/v3.18.2/cmake-3.18.2-Linux-x86_64.tar.gz /tmp/src/cmake-3.18.2-Linux-x86_64.tar.gz
-tar -zxf /tmp/src/cmake-3.18.2-Linux-x86_64.tar.gz --strip=1 -C /usr
 echo "Installing Ninja"
 GetFile https://github.com/ninja-build/ninja/archive/v1.10.0.tar.gz /tmp/src/ninja-linux.tar.gz
 tar -zxf ninja-linux.tar.gz
